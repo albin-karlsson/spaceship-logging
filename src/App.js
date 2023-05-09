@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Spaceship from "./components/Spaceship";
 
 function App() {
+  const spaceships = [
+    { name: "Millennium Falcon", speed: 1050 },
+    { name: "Naboo N-1 Starfighter", speed: 920 },
+    { name: "TIE Interceptor", speed: 1200 },
+  ];
+
+  function logSpeed(name) {
+    console.log("Logging Spaceship...");
+
+    const spaceship = spaceships.find((s) => s.name === name);
+
+    console.log(
+      `Logging ${spaceship.name}: Speed is ${spaceship.speed} parsecs`
+    );
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {spaceships.map((s) => (
+        <Spaceship
+          key={s.name}
+          name={s.name}
+          onLogSpeed={logSpeed}
+        />
+      ))}
     </div>
   );
 }
