@@ -6,12 +6,14 @@ function Spaceship(props) {
     props.onLogSpeed(props.name);
   }
 
+  function handleStart() {
+    SpaceshipService.startSpaceship(props.name);
+  }
+
   return (
     <div>
       <h1 onClick={logSpaceship}>{props.name}</h1>
-      <button onClick={() => SpaceshipService.startSpaceship(props.name)}>
-        Start!
-      </button>
+      <button onClick={handleStart}>Start!</button>
       <button onClick={() => SpaceshipService.landSpaceship(props.name)}>
         Land!
       </button>
